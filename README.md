@@ -63,7 +63,7 @@ Verilog Code
 
 4:1 MUX Gate-Level Implementation
 
-~~~module multiplexer(s1,s0,a,b,c,d,y); 
+module multiplexer(s1,s0,a,b,c,d,y); 
 input s1,s0,a,b,c,d; 
 output y; 
 wire[3:0]w; 
@@ -72,7 +72,7 @@ and g2(w[1],~s1,s0,b);
 and g3(w[2],s1,~s0,c); 
 and g4(w[3],s1,s0,d); 
 or g5(y,w[0],w[1],w[2],w[3]); 
-endmodule~~~
+endmodule
 
 Output:
 ![image](https://github.com/user-attachments/assets/acfd0a21-a009-497f-b73d-d16d86c1f9bf)
@@ -80,11 +80,11 @@ Output:
 
 4:1 MUX Data Flow Implementation
 
-```module mul_data( output Y,
+module mul_data( output Y,
 input I0, I1, I2, I3, input S0, S1
 ); 
 assign Y = (~S1 & ~S0 & I0) | (~S1 & S0 & I1) | (S1 & ~S0 & I2) | (S1 & S0 & I3);     
-endmodule```
+endmodule
 
 Output:
 ![image](https://github.com/user-attachments/assets/93d7b54d-ae5a-4341-9792-d8bfa87a5739)
@@ -92,7 +92,7 @@ Output:
 
 4:1 MUX Behavioral Implementation
 
-```module mux4_to_1_behavioral ( input wire A, input wire B, input wire C, input wire D, input wire S0, input wire S1, output reg Y );
+module mux4_to_1_behavioral ( input wire A, input wire B, input wire C, input wire D, input wire S0, input wire S1, output reg Y );
 always @(*) 
 begin 
 case ({S1, S0}) 
@@ -103,7 +103,7 @@ case ({S1, S0})
 default: Y = 1'bx; 
 endcase
 end 
-end module```
+end module
 
 Output:
 ![image](https://github.com/user-attachments/assets/8c4d20dc-5544-445a-bee9-fe77bfead8d5)
@@ -111,7 +111,7 @@ Output:
 
 4:1 MUX Structural Implementation
 
-```module mux(s, i, y); input [1:0] s; input [3:0] i; output reg y;
+module mux(s, i, y); input [1:0] s; input [3:0] i; output reg y;
 
 always @(s or i)
 begin case (s) 
@@ -122,13 +122,13 @@ begin case (s)
 default: y = 1'b0; 
 endcase 
 end 
-endmodule```
+endmodule
 
 Output:
 ![image](https://github.com/user-attachments/assets/113ead12-dce3-4bc9-9230-7a362da813b3)
 
 Testbench Implementation
-````timescale 1ns / 1ps
+`timescale 1ns / 1ps
 module multiplexer_tb;
   // Declare inputs as reg and outputs as wire
   reg s1, s0, a, b, c, d;
@@ -153,7 +153,7 @@ s1 = 1; s0 = 1; a = 0; b = 0; c = 0; d = 1; #10;  // Test case 4
     
 $finish;
   end
-endmodule```
+endmodule
 
 OUTPUT
 ![image](https://github.com/user-attachments/assets/d385f751-b788-4da7-a11a-e218d56d70c1)
