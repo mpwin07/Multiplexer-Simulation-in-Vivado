@@ -63,7 +63,7 @@ Verilog Code
 
 4:1 MUX Gate-Level Implementation
 
-```module multiplexer(s1,s0,a,b,c,d,y); 
+module multiplexer(s1,s0,a,b,c,d,y); 
 input s1,s0,a,b,c,d; 
 output y; 
 wire[3:0]w; 
@@ -72,7 +72,7 @@ and g2(w[1],~s1,s0,b);
 and g3(w[2],s1,~s0,c); 
 and g4(w[3],s1,s0,d); 
 or g5(y,w[0],w[1],w[2],w[3]); 
-endmodule```
+endmodule
 
 Output:
 ![image](https://github.com/user-attachments/assets/acfd0a21-a009-497f-b73d-d16d86c1f9bf)
